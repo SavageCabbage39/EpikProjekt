@@ -6,11 +6,13 @@ import random
 #app window
 window = tk.Tk()
 window.title("Roll the dice!")
-window.geometry("500x500")
+window.attributes('-fullscreen', True)  # Make the window fullscreen
 window.protocol("WM_DELETE_WINDOW", lambda:None) #Prevents closing the tab with X
+window.overrideredirect(True)  # Remove title bar and window decorations
+
 
 # Load and display the background image
-background_image = tk.PhotoImage(file="Assets/dice.jpg")
+background_image = tk.PhotoImage(file="Assets/dice.png")
 
 # Create a label to display the background image
 background_label = tk.Label(window, image=background_image)
@@ -26,7 +28,9 @@ start_label = tk.Label(
     text="click to roll",
     font=fontstyle,
     anchor="n",
-    borderwidth=0
+    borderwidth=0,
+    background="black",
+    foreground="white"
     )
 start_label.pack()
 
@@ -51,7 +55,7 @@ button.pack()
 #output
 number=tk.StringVar()
 bottom_text = tk.Label(master= window, text="Bottom text", font="Calibri 77", textvariable=number,anchor="center",borderwidth=0)
-bottom_text.pack(pady=100)
+bottom_text.pack(pady=300)
 
 
 #run
